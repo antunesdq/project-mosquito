@@ -1,0 +1,32 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    
+    <TextureView
+        android:id="@+id/video_previewer_surface"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/textview_qrcode"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_alignBottom="@id/video_previewer_surface"
+        android:fontFamily="sans-serif-smallcaps"
+        android:gravity="center"
+        android:background="@color/colorWhite"
+        android:text="@string/sem_leitura"
+        android:textColor="@color/colorBlack"
+        android:textSize="30sp"/>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="710dp"
+        android:src="@drawable/scania_logo"/>
+
+</RelativeLayout>
