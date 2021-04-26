@@ -192,18 +192,18 @@ public class CameraActivity extends Activity implements SurfaceTextureListener,O
                     public void onSuccess(List<Barcode> barcodes) {
                         if (barcodes.size() > 0){
                             for (Integer Index =0 ; Index < barcodes.size(); Index++) {
-                                if (!(TextUtils.isEmpty(barcodes.get(Index).getRawValue())) || ((barcodes.get(Index).getRawValue().contains("MU")) || (barcodes.get(Index).getRawValue().contains("LOC")))){
+                                if (!(TextUtils.isEmpty(barcodes.get(Index).getRawValue())) || ((barcodes.get(Index).getRawValue().length() == 8) || (barcodes.get(Index).getRawValue().contains("L")))){
                                     if (!CorrectLabels.contains(barcodes.get(Index).getRawValue())){
                                         CorrectLabels.add(barcodes.get(Index).getRawValue());
                                     }
                                 }
                             }
                             for (Integer Index =0 ; Index < CorrectLabels.size(); Index++) {
-                                if (CorrectLabels.get(Index).contains("MU")){
+                                if (CorrectLabels.get(Index).length() == 8){
                                     Mu = CorrectLabels.get(Index);
                                 }
                                 else{
-                                     if(CorrectLabels.get(Index).contains("LOC")){
+                                     if(CorrectLabels.get(Index).contains("L")){
 
                                          Loc = CorrectLabels.get(Index);
                                      }
@@ -256,9 +256,9 @@ public class CameraActivity extends Activity implements SurfaceTextureListener,O
                         conn.setDoOutput(true);
                         conn.setDoInput(true);
                         JSONObject jsonParam = new JSONObject();
-                        jsonParam.put("PositionId", Location);
-                        jsonParam.put("PartId", MaterialUnit);
-                        jsonParam.put("RegisteredBy", "Collector");
+                        jsonParam.put("Position", Location);
+                        jsonParam.put("Part", MaterialUnit);
+                        jsonParam.put("RegisteredBy", "Drone");
                         DataOutputStream os = new DataOutputStream(conn.getOutputStream());
                         os.writeBytes(jsonParam.toString());
                         os.flush();
